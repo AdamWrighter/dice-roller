@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice roller</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" media="nope!" onload="this.media='all'">
 </head>
 
 <body>
-    <div id="total-container"></div>
+    <div id="total-container">
+        <span class="total">Total: 0 | Hi: 0 | Lo: 0</span>
+    </div>
     <div id="dice-buttons">
         <button id="d20" onclick="addDie(20)">+d20</button>
         <button id="d12" onclick="addDie(12)">+d12</button>
