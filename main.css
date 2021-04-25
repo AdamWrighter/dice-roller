@@ -4,6 +4,10 @@ body {
     color: #37352F;
 }
 
+body.embed {
+    margin: 0;
+}
+
 button {
     font-size: 1rem;
     padding: 5px;
