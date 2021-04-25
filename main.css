@@ -1,0 +1,99 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #fff;
+    color: #37352F;
+}
+
+button {
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #F9F9FA;
+    border: 1px solid #DFDFDE;
+    margin-bottom: 3px;
+}
+
+button:hover {
+    filter: brightness(1.05);
+}
+
+button:active {
+    filter: brightness(0.95);
+}
+
+button.removeDie {
+    border-left: 0px;
+    border-radius: 0 3px 3px 0;
+    background-color: #FE7369;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+button.dieNumber {
+    border-radius: 3px 0 0 3px;
+}
+
+#total-container {
+    margin-bottom: 5px;
+}
+
+#dice {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3px;
+}
+
+.die {
+    margin-right: 3px;
+}
+
+.dieContainer.showing {
+    animation: buttonzoomin 100ms ease-in-out forwards;
+}
+
+.dieContainer.hiding {
+    opacity: 0;
+    animation: buttonzoomout 100ms ease-in-out;
+}
+
+.dieNumber {
+    border-right: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #2F3437;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    button {
+        background-color: #313437;
+        color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #4D5153;
+    }
+}
+
+@keyframes buttonzoomin {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}
+
+@keyframes buttonzoomout {
+    from {
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.9);
+        opacity: 0;
+        visibility: hidden;
+    }
+}

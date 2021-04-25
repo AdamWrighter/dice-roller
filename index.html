@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-48MHZE3HT4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-48MHZE3HT4');
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice roller</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="total-container"></div>
+    <div id="dice-buttons">
+        <button id="d20" onclick="addDie(20)">+d20</button>
+        <button id="d12" onclick="addDie(12)">+d12</button>
+        <button id="d10" onclick="addDie(10)">+d10</button>
+        <button id="d8" onclick="addDie(8)">+d8</button>
+        <button id="d6" onclick="addDie(6)">+d6</button>
+        <button id="d4" onclick="addDie(4)">+d4</button>
+    </div>
+    <div id="dice"></div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
