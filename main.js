@@ -85,5 +85,4 @@ function detectNotion() {
         document.body.classList.add("embed");
     }
 }
-calcStats();
 detectNotion();
