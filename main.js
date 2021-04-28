@@ -1,9 +1,12 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+// Generate random number between 1 and max
 function ranNum(max) {
     return Math.floor(Math.random() * max) + 1;
 }
+
+// Play dice roll sounds, never playing the same one twice in a row
 
 var oldSound = 0;
 
@@ -16,6 +19,8 @@ function sound() {
     oldSound = newSound;
 }
 
+// Roll using ranNum and calculate statistics
+
 function roll(sides) {
     if (urlParams.get('sound') == 'true') {
         sound();
@@ -23,6 +28,8 @@ function roll(sides) {
     calcStats();
     return ranNum(sides);
 }
+
+// Add new dice on clicking add die button
 
 function addDie(sides) {
     let dieNumber = roll(sides);
@@ -41,6 +48,8 @@ function addDie(sides) {
     calcStats();
 }
 
+// Destroy die
+
 function removeDie(e) {
     e.parentNode.parentNode.classList.toggle('hiding');
     setTimeout(() => {
@@ -49,11 +58,15 @@ function removeDie(e) {
     calcStats();
 }
 
+// Re-roll die when result is clicked
+
 function reRoll(e) {
     e.children[0].innerHTML = roll(e.dataset.sides);
     e.dataset.roll = e.children[0].innerHTML;
     calcStats();
 }
+
+// Calculate total of rolls and hi & lo roll
 
 function calcStats() {
     let rollArray = [];
@@ -72,6 +85,8 @@ function calcStats() {
     document.querySelector('#total-container').innerHTML = totalTemplate;
 }
 
+// Detect if page is in an iFrame
+
 function inIframe() {
     try {
         return window.self !== window.top;
@@ -79,6 +94,8 @@ function inIframe() {
         return true;
     }
 }
+
+// If an an iFrame, add class to body for reduced margins
 
 function detectNotion() {
     if (inIframe()) {
