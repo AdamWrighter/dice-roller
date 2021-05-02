@@ -48,7 +48,7 @@ function addDie(sides) {
     calcStats();
 }
 
-// Destroy die
+// Destroy one die
 
 function removeDie(e) {
     e.parentNode.parentNode.classList.toggle('hiding');
@@ -56,6 +56,12 @@ function removeDie(e) {
         e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
     }, 100);
     calcStats();
+}
+
+// Destroy all dice
+
+function removeAllDice() {
+    document.querySelectorAll('.removeDie').forEach(el=>el.click())
 }
 
 // Re-roll die when result is clicked
