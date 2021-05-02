@@ -8,6 +8,14 @@ body.embed {
     margin: 5px 0 0 0;
 }
 
+#dice-buttons {
+    display: flex;
+}
+
+#dice-buttons button:not(:last-child) {
+    margin-right: 3px;
+}
+
 button {
     font-size: 1rem;
     padding: 5px;
@@ -34,6 +42,7 @@ button.removeDie {
 
 button.dieNumber {
     border-radius: 3px 0 0 3px;
+    width: 70px;
 }
 
 #total-container {
