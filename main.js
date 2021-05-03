@@ -10,23 +10,29 @@ function ranNum(max) {
 
 var oldSound = 0;
 
-function sound() {
+function sound(thisRoll, sides) {
     let newSound = ranNum(10);
     while (newSound == oldSound) {
         newSound = ranNum(10);
     }
     new Audio(`roll${newSound}.ogg`).play();
     oldSound = newSound;
+    if (thisRoll == sides) {
+        setTimeout(() => {
+            new Audio('natural.ogg').play();
+        }, 200);
+    }
 }
 
 // Roll using ranNum and calculate statistics
 
 function roll(sides) {
+    let thisRoll = ranNum(sides);
     if (urlParams.get('sound') == 'true') {
-        sound();
+        sound(thisRoll, sides);
     }
     calcStats();
-    return ranNum(sides);
+    return thisRoll;
 }
 
 // Add new dice on clicking add die button
