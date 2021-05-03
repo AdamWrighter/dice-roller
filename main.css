@@ -5,7 +5,8 @@ body {
 }
 
 body.embed {
-    margin: 5px 0 0 3px;
+    margin: 5px 0 0 0;
+    padding-left: 3px;
 }
 
 #dice-buttons {
@@ -37,7 +38,7 @@ button.dieNumber, button.removeDie {
 button:hover,
 button:focus {
     filter: brightness(1.05);
-    outline: 0;
+    outline: none;
 }
 
 button:active {
