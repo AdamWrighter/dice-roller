@@ -35,6 +35,9 @@ function addDie(sides) {
     let dieNumber = roll(sides);
     let dieContainer = document.createElement("div");
     dieContainer.classList.add("dieContainer");
+    if (dieNumber == sides) {
+        dieContainer.classList.add("natural");
+    }
     dieContainer.classList.toggle("showing");
     var dieTemplate = `<div class="die">
             <button class="dieNumber" onclick="reRoll(this)" data-sides="${sides}" data-roll="${dieNumber}"><strong class="number">${dieNumber}</strong> (${sides})</span>
@@ -44,7 +47,7 @@ function addDie(sides) {
     document.querySelector('#dice').appendChild(dieContainer);
     setTimeout(() => {
         dieContainer.classList.toggle("showing");
-    }, 1000);
+    }, 100);
     calcStats();
 }
 
@@ -67,8 +70,15 @@ function removeAllDice() {
 // Re-roll die when result is clicked
 
 function reRoll(e) {
-    e.children[0].innerHTML = roll(e.dataset.sides);
+    let sides = e.dataset.sides;
+    e.children[0].innerHTML = roll(sides);
     e.dataset.roll = e.children[0].innerHTML;
+    let dieNumber = e.dataset.roll;
+    if (dieNumber == sides) {
+        e.parentNode.parentNode.classList.add("natural");
+    } else {
+        e.parentNode.parentNode.classList.remove("natural");
+    }
     calcStats();
 }
 

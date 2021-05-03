@@ -25,6 +25,15 @@ button {
     margin-bottom: 3px;
 }
 
+button.dieNumber, button.removeDie {
+    margin-bottom: 0;
+}
+
+.dieContainer {
+    margin-bottom: 3px;
+}
+
+
 button:hover {
     filter: brightness(1.05);
 }
@@ -72,6 +81,10 @@ button.dieNumber {
     border-right: 0;
 }
 
+.natural .die {
+    /* box-shadow: 0 0 3px 0 gold; */
+    animation: buttonglow 200ms ease-in-out forwards;
+}
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #2F3437;
@@ -108,5 +121,18 @@ button.dieNumber {
         transform: scale(0.9);
         opacity: 0;
         visibility: hidden;
+    }
+}
+
+@keyframes buttonglow {
+    0% {
+        box-shadow: 0 0 0px 0 gold;
+    }
+
+    50% {
+        box-shadow: 0 0 50px 0 gold;
+    }
+    100% {
+        box-shadow: 0 0 3px 0 gold;
     }
 }
