@@ -7,10 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice roller</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css" media="nope!" onload="this.media='all'">
+    <style>
+        .hidden {
+            visibility: hidden;
+        }
+
+        body:not(.hidden) {
+            animation: fadein 200ms ease-in-out forwards;
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="hidden">
     <div id="total-container">
         <span class="total">Total: 0 | Hi: 0 | Lo: 0</span>
     </div>

@@ -4,7 +4,9 @@ const urlParams = new URLSearchParams(queryString);
 // Serif font support
 if (urlParams.get('font') == 'serif') {
     document.body.classList.add("serif");
-    document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Newsreader&display=swap" />';
+    document.body.classList.remove("hidden");
+} else {
+    document.body.classList.remove("hidden");
 }
 
 // Generate random number between 1 and max
