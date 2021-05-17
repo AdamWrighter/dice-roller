@@ -4,6 +4,11 @@ body {
     color: #37352F;
 }
 
+body.serif,
+body.serif button {
+    font-family: 'Newsreader', serif;
+}
+
 body.embed {
     margin: 5px 0 0 0;
     padding-left: 3px;
@@ -18,11 +23,12 @@ body.embed {
 }
 
 button {
+    transition: background 20ms ease-in 0s;
     font-size: 1rem;
     padding: 5px;
     border-radius: 3px;
-    background-color: #F9F9FA;
-    border: 1px solid #DFDFDE;
+    background-color: transparent;
+    border: 1px solid rgba(55, 53, 47, 0.16);
     margin-bottom: 3px;
 }
 
@@ -35,9 +41,12 @@ button.dieNumber, button.removeDie {
 }
 
 
-button:hover,
+button:hover {
+    background: rgba(55,53,47,0.08) none repeat;
+    outline: none;
+}
+
 button:focus {
-    filter: brightness(1.05);
     outline: none;
 }
 
@@ -98,7 +107,11 @@ button.dieNumber {
     button {
         background-color: #313437;
         color: rgba(255, 255, 255, 0.9);
-        border: 1px solid #4D5153;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    button:hover {
+        background: rgb(71,76,80) none repeat scroll 0% 0%;
     }
 }
 

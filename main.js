@@ -1,6 +1,12 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+// Serif font support
+if (urlParams.get('font') == 'serif') {
+    document.body.classList.add("serif");
+    document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Newsreader&display=swap" />';
+}
+
 // Generate random number between 1 and max
 function ranNum(max) {
     return Math.floor(Math.random() * max) + 1;
@@ -118,10 +124,6 @@ function inIframe() {
 }
 
 // If an an iFrame, add class to body for reduced margins
-
-function detectNotion() {
-    if (inIframe()) {
-        document.body.classList.add("embed");
-    }
+if (inIframe()) {
+    document.body.classList.add("embed");
 }
-detectNotion();
