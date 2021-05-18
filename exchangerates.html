@@ -10,6 +10,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css?v=170521" media="nope!" onload="this.media='all'">
+    <style>
+        .hidden {
+            visibility: hidden;
+        }
+
+        body:not(.hidden) {
+            animation: fadein 200ms ease-in-out forwards;
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -73,6 +96,7 @@
         body {
             margin: 0;
             font-size: 14px;
+            an
         }
         table {
             width: 97vw;
