@@ -1,0 +1,636 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5476230f-c785-4a80-b2f4-ac3947104e91" class="page serif"><header><h1 class="page-title">Introduction</h1></header><div class="page-body"><ul id="f882130a-113a-4e25-b6f7-dffd557560da" class="toggle"><li><details open=""><summary>Contents</summary><nav id="0776edf4-3578-416e-9794-911571081b38" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0b7c8dc6-3914-43ee-9b6e-471eeb5743ce">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#43afb149-d172-453d-b150-3ed38ed0f6b1">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#41611565-3dd5-4edc-9a52-1c06dbc20a8e">Worlds of Adventure</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ed367867-9a82-4764-b4ea-ed85384f21b7">Using This Book</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fdf29022-5a1a-4143-90bc-ae780cce7bbb">How to Play</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3426e392-1e86-4b2f-a20f-3069ba7fff86">Game Dice</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0cdad19c-798a-41d1-9d5e-c2661059ee5e">The D20</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b5154db1-90b0-4f77-b5ed-f795fe6061c7">Advantage and Disadvantage</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#474014f7-a542-4634-9a1b-0fd5138c2b11">Specific Beats General</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ab77fab5-d28e-4c6b-bdc6-df32c545c438">Round Down</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#541bf3ca-ae02-434a-8516-73152dcd7575">Adventures</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#947768c4-9262-4cd9-8fbb-31e231b31858">The Three Pillars of Adventure</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e46e4586-8d62-498c-871e-e7288a67889b">The Wonders of Magic</a></div></nav></details></li></ul><h1 id="0b7c8dc6-3914-43ee-9b6e-471eeb5743ce" class="">Preface</h1><p id="91811b36-7704-4d87-be00-b5082aca3658" class="">Once upon a time, long, long ago, in a realm called the Midwestern United States — specifically the states of Minnesota and Wisconsin — a group of friends gathered together to forever alter the history of gaming.</p><p id="67ffa776-cf73-4de6-bdd8-4f60e8bdeb9e" class="">It wasn’t their intent to do so. They were tired of merely reading tales about worlds of magic, monsters, and adventure. They wanted to play in those worlds, rather than observe them. That they went on to  invent Dungeons &amp; Dragons, and thereby ignite a revolution in gaming that continues to this day, speaks to two things.</p><p id="e2332294-5f17-499c-adb3-f549a3e31eec" class="">First, it speaks to their ingenuity and genius in figuring out that games were the perfect way to explore worlds that could not otherwise exist. Almost every modern game, whether played on a digital device or a tabletop, owes some debt to D&amp;D.</p><p id="ac5c5e4a-9f4c-4c79-b210-81fa3e473bf3" class="">Second, it is a testament to the inherent appeal of the game they created. Dungeons &amp; Dragons sparked a thriving global phenomenon. It is the first roleplaying game, and it remains one of the best of its breed.</p><p id="014bb726-f3f8-47d0-ad8b-74c5f702196c" class="">To play D&amp;D, and to play it well, you don’t need to read all the rules, memorize every detail of the game, or master the fine art of rolling funny looking dice. None of those things have any bearing on what’s best about the game.</p><p id="d81bfbe4-857b-4637-bbfa-62bab68081f8" class="">What you need are two things, the first being friends with whom you can share the game. Playing games with your friends is a lot of fun, but D&amp;D does something more than entertain.</p><p id="582079fd-6584-407f-8edb-4e41c3203168" class="">Playing D&amp;D is an exercise in collaborative creation. You and your friends create epic stories filled with tension and memorable drama. You create silly in-jokes that make you laugh years later. The dice will be cruel to you, but you will soldier on. Your collective creativity will build stories that you will tell again and again, ranging from the utterly absurd to the stuff of legend.</p><p id="1247ee99-2256-472b-8589-cd9fe9833627" class="">If you don’t have friends interested in playing, don’t worry. There’s a special alchemy that takes place around a D&amp;D table that nothing else can match. Play the game with someone enough, and the two of you are likely to end up friends. It’s a cool side effect of the game. Your next gaming group is as close as the nearest game store, online forum, or gaming convention.</p><p id="97da1c4b-fedc-4682-90d5-5ec51c1a8fb1" class="">The second thing you need is a lively imagination or, more importantly, the willingness to use whatever imagination you have. You don’t need to be a master storyteller or a brilliant artist. You just need to aspire to create, to have the courage of someone who is willing to build something and share it with others.</p><p id="1419b52f-30d3-4f90-9282-d5cb5d087ab3" class="">Luckily, just as D&amp;D can strengthen your friendships, it can help build in you the confidence to create and share. D&amp;D is a game that teaches you to look for the clever solution, share the sudden idea that can overcome a problem, and push yourself to imagine what could be, rather than simply accept what is.</p><p id="0b317b0c-51db-4e25-ad7a-97e6c0330fcf" class="">The first characters and adventures you create will probably be a collection of clichés. That’s true of everyone, from the greatest Dungeon Masters in history on down. Accept this reality and move on to create the second character or adventure, which will be better, and then the third, which will be better still. Repeat that over the course of time, and soon you’ll be able to create anything, from a character’s background story to an epic world of fantasy adventure.</p><p id="12e7155f-bada-47fa-aacc-a6ebf0eed813" class="">Once you have that skill, it’s yours forever. Countless writers, artists, and other creators can trace their beginnings to a few pages of D&amp;D notes, a handful of dice, and a kitchen table.</p><p id="b3867dbd-007a-4819-b652-d6efec4f4f9c" class="">Above all else, D&amp;D is yours. The friendships you make around the table will be unique to you. The adventures you embark on, the characters you create, the memories you make—these will be yours. D&amp;D is your personal corner of the universe, a place where you have free reign to do as you wish.</p><p id="422e3a66-c0c1-4b5d-9faa-e8d49fac0448" class="">Go forth now. Read the rules of the game and the story of its worlds, but always remember that you are the one who brings them to life. They are nothing without the spark of life that you give them.</p><h1 id="43afb149-d172-453d-b150-3ed38ed0f6b1" class="">Introduction</h1><p id="2a9f3ada-89ed-40cb-a25b-f3bafff6c9fb" class="">The Dungeons &amp; Dragons roleplaying game is about storytelling in worlds of swords and sorcery. It shares elements with childhood games of make-believe. Like those games, D&amp;D is driven by imagination. It’s about picturing the towering castle beneath the stormy night sky and imagining how a fantasy adventurer might react to the challenges that scene presents.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aef9e9f-1200-415f-8f99-3aee178bafef"><div style="font-size:1.5em"><span class="icon">🗨️</span></div><div style="width:100%"><strong>Dungeon Master (DM):</strong> After passing through the craggy peaks, the road takes a sudden turn to the east and Castle Ravenloft towers before you. Crumbling towers of stone keep a silent watch over the approach. They look like abandoned guardhouses. Beyond these, a wide chasm gapes, disappearing into the deep fog below. A lowered drawbridge spans the chasm, leading to an arched entrance to the castle courtyard. The chains of the drawbridge creak in the wind, their rust-eaten iron straining with the weight. From atop the high strong walls, stone gargoyles stare at you from hollow sockets and grin hideously. A rotting wooden portcullis, green with growth, hangs in the entry tunnel. Beyond this, the main doors of Castle Ravenloft stand open, a rich warm light spilling into the courtyard.
+<strong>Phillip (playing Gareth):</strong> I want to look at the gargoyles. I have a feeling they’re not just statues.
+<strong>Amy (playing Riva):</strong> The drawbridge looks precarious? I want to see how sturdy it is. Do I think we can cross it, or is it going to collapse under our weight?</div></figure><p id="a05284c9-bc8d-43d4-b2d0-c43457a74da2" class="">Unlike a game of make-believe, D&amp;D gives structure to the stories, a way of determining the consequences of the adventurers’ action. Players roll dice to resolve whether their attacks hit or miss or whether their adventurers can scale a cliff, roll away from the strike of a magical lightning bolt, or pull off some other dangerous task. Anything is possible, but the dice make some outcomes more probable than others.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b8a60f08-a5e2-4028-ae94-dbab4b94f4bb"><div style="font-size:1.5em"><span class="icon">🗨️</span></div><div style="width:100%"><strong>Dungeon Master (DM): </strong>OK, one at a time. Phillip, you’re looking at the gargoyles?
+<strong>Phillip: </strong>Yeah. Is there any hint they might be creatures and not decorations?
+<strong>DM:</strong> Make an Intelligence check.
+<strong>Phillip: </strong>Does my Investigation skill apply?
+<strong>DM: </strong>Sure!
+<strong>Phillip (rolling a d20): </strong>Ugh. Seven.
+<strong>DM: </strong>They look like decorations to you. And Amy, Riva is checking out the drawbridge?</div></figure><p id="d565888f-7375-44dd-99f9-8255c1fefba7" class="">In the Dungeons &amp; Dragons game, each player creates an adventurer (also called a character) and teams up with other adventurers (played by friends). Working together, the group might explore a dark dungeon, a ruined city, a haunted castle, a lost temple deep in a jungle, or a lava-filled cavern beneath a mysterious mountain. The adventurers can solve puzzles, talk with other characters, battle fantastic monsters, and discover fabulous magic items and other treasure.</p><p id="3c20bd02-5910-475f-b78e-b8e75e1cc8e5" class="">One player, however, takes on the role of the Dungeon Master (DM), the game’s lead storyteller and referee. The DM creates adventures for the characters, who navigate its hazards and decide which paths to explore. The DM might describe the entrance to Castle Ravenloft, and the players decide what they want their adventurers to do. Will they walk across the dangerously weathered drawbridge? Tie themselves together with rope to minimize the chance that someone will fall if the drawbridge gives way? Or cast a spell to carry them over the chasm?</p><p id="6181a98c-f48a-44eb-9339-9474617bcb98" class="">Then the DM determines the results of the adventurers’ actions and narrates what they experience. Because the DM can improvise to react to anything the players attempt, D&amp;D is infinitely flexible, and each adventure can be exciting and unexpected.</p><p id="8691a15a-4f79-4c19-b3ae-e1ff45dbfe3f" class="">The game has no real end; when one story or quest wraps up, another one can begin, creating an ongoing story called a <strong>campaign</strong>. Many people who play the game keep their campaigns going for months or years, meeting with their friends every week or so to pick up the story where they left off. The adventurers grow in might as the campaign continues. Each monster defeated, each adventure completed, and each treasure recovered not only adds to the continuing story, but also earns the adventurers new capabilities. This increase in power is reflected by an adventurer’s level.</p><p id="77d6085f-02db-44c6-949d-56e1d32c1923" class="">There’s no winning and losing in the Dungeons &amp; Dragons game—at least, not the way those terms are usually understood. Together, the DM and the players create an exciting story of bold adventurers who confront deadly perils. Sometimes an adventurer might come to a grisly end, torn apart by ferocious monsters or done in by a nefarious villain. Even so, the other adventurers can search for powerful magic to revive their fallen comrade, or the player might choose to create a new character to carry on. The group might fail to complete an adventure successfully, but if everyone had a good time and created a memorable story, they all win.</p><h2 id="41611565-3dd5-4edc-9a52-1c06dbc20a8e" class="">Worlds of Adventure</h2><p id="5a3ae30e-a116-4d19-adb7-ca97377897b3" class="">The many worlds of the Dungeons &amp; Dragons game are places of magic and monsters, of brave warriors and spectacular adventures. They begin with a foundation of medieval fantasy and then add the creatures, places, and magic that make these worlds unique.</p><p id="fb9b5b58-4d92-42ff-b99e-f5ef17b1d632" class="">The worlds of the Dungeons &amp; Dragons game exist within a vast cosmos called the <strong>multiverse</strong>, connected in strange and mysterious ways to one another and to other planes of existence, such as the Elemental Plane of Fire and the Infinite Depths of the Abyss. Within this multiverse are an endless variety of worlds. Many of them have been published as official settings for the D&amp;D game. The legends of the Forgotten Realms, Dragonlance, Greyhawk, Dark Sun, Mystara, and Eberron settings are woven together in the fabric of the multiverse. Alongside these worlds are hundreds of thousands more, created by generations of D&amp;D players for their own games. And amid all the richness of the multiverse, you might create a world of your own.</p><p id="b5f3df1c-af4a-4ec9-bb09-76b5c0fc73c2" class="">All these worlds share characteristics, but each world is set apart by its own history and cultures, distinctive monsters and races, fantastic geography, ancient dungeons, and scheming villains. Some races have unusual traits in different worlds. The halflings of the Dark Sun setting, for example, are jungle-dwelling cannibals, and the elves are desert nomads. Some worlds feature races unknown in other settings, such as Eberron’s warforged, soldiers created and imbued with life to fight in the Last War. Some worlds are dominated by one great story, like the War of the Lance that plays a central role in the Dragonlance setting. But they’re all D&amp;D worlds, and you can use the rules here to create a character and play in any one of them.</p><p id="40b69764-d6a2-4639-bca8-57de81778cdb" class="">Your DM might set the campaign on one of these worlds or on one that he or she created. Because there is so much diversity among the worlds of D&amp;D, you should check with your DM about any house rules that will affect your play of the game. Ultimately, the Dungeon Master is the authority on the campaign and its setting, even if the setting is a published world.</p><h2 id="ed367867-9a82-4764-b4ea-ed85384f21b7" class="">Using This Book</h2><p id="5aaecabb-b437-4559-bea3-89b5140cc630" class="">The <em>Player&#x27;s Handbook</em> is divided into three parts.</p><p id="19195324-205d-4713-9f70-7ae68d318816" class=""><strong>Part 1</strong> (chapters 1–6) is about creating a character, providing the rules and guidance you need to make the character you’ll play in the game. It includes information on the various races, classes, backgrounds, equipment, and other customization options that you can choose from. Many of the rules in part 1 rely on material in parts 2 and 3. If you come across a game concept in part 1 that you don’t understand, consult the book’s index.</p><p id="527d9432-a8ab-4f4b-8537-46127ea207d7" class=""><strong>Part 2</strong> (chapters 7–9) details the rules of how to play the game, beyond the basics described in this introduction. That part covers the kinds of die rolls you make to determine success or failure at the tasks your character attempts, and describes the three broad categories of activity in the game: exploration, interaction, and combat.</p><p id="b5d1f383-56a8-4ed7-a12f-dc12bac345ae" class=""><strong>Part 3</strong> (chapters 10–11) is all about magic. It covers the nature of magic in the worlds of D&amp;D, the rules for spellcasting, and the huge variety of spells available to magic-using characters (and monsters) in the game.</p><h2 id="fdf29022-5a1a-4143-90bc-ae780cce7bbb" class="">How to Play</h2><p id="ccf7f28f-f1b5-4a4a-9455-6ea4c589afc2" class="">The play of the Dungeons &amp; Dragons game unfolds according to this basic pattern.</p><p id="9da5523e-0145-4528-9861-fc2dcc444f21" class=""><strong>1. The DM describes the environment.</strong></p><p id="a1285376-a67d-4b28-88e8-2ab8bb9c91a3" class="">The DM tells the players where their adventurers are and what’s around them, presenting the basic scope of options that present themselves (how many doors lead out of a room, what’s on a table, who’s in the tavern, and so on).</p><p id="4f51edf4-9b64-4104-a19d-359ff7c77da0" class=""><strong>2. The players describe what they want to do.</strong></p><p id="aa7a119b-eb60-496b-9c1c-7888654cef5c" class="">Sometimes one player speaks for the whole party, saying, “We’ll take the east door,” for example. Other times, different adventurers do different things: one adventurer might search a treasure chest while a second examines an esoteric symbol engraved on a wall and a third keeps watch for monsters. The players don’t need to take turns, but the DM listens to every player and decides how to resolve those actions.</p><p id="0967065e-d0f4-4ad1-aba3-e0b4018e23ab" class="">Sometimes, resolving a task is easy. If an adventurer wants to walk across a room and open a door, the DM might just say that the door opens and describe what lies beyond. But the door might be locked, the floor might hide a deadly trap, or some other circumstance might make it challenging for an adventurer to complete a task. In those cases, the DM decides what happens, often relying on the roll of a die to determine the results of an action.</p><p id="d22544a6-e0d1-47be-b82c-8110ac972093" class=""><strong>3. The DM narrates the results of the adventurers’ actions.</strong></p><p id="0ec17bbe-22cd-4c97-9aba-edabd583ed3b" class="">Describing the results often leads to another decision point, which brings the flow of the game right back to step 1.</p><p id="a01cd3a7-9dc1-4eb2-afb5-6e28125fee7e" class="">This pattern holds whether the adventurers are cautiously exploring a ruin, talking to a devious prince, or locked in mortal combat against a mighty dragon. In certain situations, particularly combat, the action is more structured and the players (and DM) do take turns choosing and resolving actions. But most of the time, play is fluid and flexible, adapting to the circumstances of the adventure.</p><p id="43f3836f-fdc4-4124-99fe-6f3abe7a75ca" class="">Often the action of an adventure takes place in the imagination of the players and DM, relying on the DM’s verbal descriptions to set the scene. Some DMs like to use music, art, or recorded sound effects to help set the mood, and many players and DMs alike adopt different voices for the various adventurers, monsters, and other characters they play in the game. Sometimes, a DM might lay out a map and use tokens or miniature figures to represent each creature involved in a scene to help the players keep track of where everyone is.</p><h3 id="3426e392-1e86-4b2f-a20f-3069ba7fff86" class="">Game Dice</h3><p id="80c672c8-601d-4bcf-8b53-02dfd8581d55" class="">The game uses polyhedral dice with different numbers of sides. You can find dice like these in game stores and in many bookstores.</p><p id="4677b34d-3675-440a-9509-8d22d41b5ca4" class="">In these rules, the different dice are referred to by the letter d followed by the number of sides: d4, d6, d8, d10, d12, and d20. For instance, a d6 is a six-sided die (the typical cube that many games use).</p><p id="1b51cbea-d157-48b5-9acd-29d7e5c6a6ae" class="">Percentile dice, or d100, work a little differently. You generate a number between 1 and 100 by rolling two different ten-sided dice numbered from 0 to 9. One die (designated before you roll) gives the tens digit, and the other gives the ones digit. If you roll a 7 and a 1, for example, the number rolled is 71. Two 0s represent 100. Some ten-sided dice are numbered in tens (00, 10, 20, and so on), making it easier to distinguish the tens digit from the ones digit. In this case, a roll of 70 and 1 is 71, and 00 and 0 is 100.</p><p id="0c89da13-e187-40d8-8183-dde0c6025eb0" class="">When you need to roll dice, the rules tell you how many dice to roll of a certain type, as well as what modifiers to add. For example, “3d8 + 5” means you roll three eight-sided dice, add them together, and add 5 to the total.</p><p id="f6799b0f-6e01-41dc-9bbe-eda3f37c06a7" class="">The same d notation appears in the expressions “1d3” and “1d2.” To simulate the roll of 1d3, roll a d6 and divide the number rolled by 2 (round up). To simulate the roll of 1d2, roll any die and assign a 1 or 2 to the roll depending on whether it was odd or even. (Alternatively, if the number rolled is more than half the number of sides on the die, it’s a 2.)</p><h3 id="0cdad19c-798a-41d1-9d5e-c2661059ee5e" class="">The D20</h3><p id="4587702c-dde5-46af-9f91-32e4db6b87a3" class="">Does an adventurer’s sword swing hurt a dragon or just bounce off its iron-hard scales? Will the ogre believe an outrageous bluff? Can a character swim across a raging river? Can a character avoid the main blast of a fireball, or does he or she take full damage from the blaze? In cases where the outcome of an action is uncertain, the Dungeons &amp; Dragons game relies on rolls of a 20-sided die, a d20, to determine success or failure.</p><p id="e4bc5df0-e953-4826-9107-0f99b0383684" class="">Every character and monster in the game has capabilities defined by six <strong>ability scores</strong>. The abilities are Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma, and they typically range from 3 to 18 for most adventurers. (Monsters might have scores as low as 1 or as high as 30.) These ability scores, and the <strong>ability modifiers</strong> derived from them, are the basis for almost every d20 roll that a player makes on a character’s or monster’s behalf.</p><p id="09d6880e-dff5-4ecf-b72d-f2346466a44e" class="">Ability checks, attack rolls, and saving throws are the three main kinds of d20 rolls, forming the core of the rules of the game. All three follow these simple steps.</p><div id="0d67677e-b8c7-46bc-a26d-5a9383c4daa8" class="column-list"><div id="a8f93db3-995b-4315-bfb5-25bb3f9f8e51" style="width:50%" class="column"><p id="6fe5e23d-03a2-42ba-8bf9-f0e52af7430c" class=""><strong>1. Roll the die and add a modifier.</strong></p><p id="2f46055a-9f3c-4949-95d9-593ff4792af7" class="">Roll a d20 and add the relevant modifier. This is typically the modifier derived from one of the six ability scores, and it sometimes includes a proficiency bonus to reflect a character’s particular skill. (See <a href="https://www.dndbeyond.com/compendium/rules/phb/step-by-step-characters">Chapter 1</a> for details on each ability and how to determine an ability’s modifier.)</p></div><div id="c8685348-894b-4c9f-9cb9-71baef058b3c" style="width:50%" class="column"><figure id="0fc6b25d-ca8e-4117-8c42-27e819c16cbd" class="image"><a href="https://media-waterdeep.cursecdn.com/attachments/thumbnails/6/552/268/282/dice_1.png"><img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/6/552/268/282/dice_1.png"/></a></figure></div></div><p id="3c5a8fa0-0b9b-4a94-90a3-a9b90afb09e4" class=""><strong>2. Apply circumstantial bonuses and penalties.</strong></p><p id="f9695534-3f85-4531-b36b-cef3bfc53913" class="">A class feature, a spell, a particular circumstance, or some other effect might give a bonus or penalty to the check.</p><p id="0b70fd2d-aace-4943-80f0-14b0ed28fdb3" class=""><strong>3. Compare the total to a target number.</strong></p><p id="a2276caf-5aef-4d98-8c08-ee4f684a12ff" class="">If the total equals or exceeds the target number, the ability check, attack roll, or saving throw is a success. Otherwise, it’s a failure. The <strong>DM</strong> is usually the one who determines target numbers and tells players whether their ability checks, attack rolls, and saving throws succeed or fail.</p><p id="1bb50919-0a46-40dd-ac8b-ff8ddf9b1f50" class="">The target number for an ability check or a saving throw is called a <strong>Difficulty Class</strong> (DC). The target number for an attack roll is called an <strong>Armor Class</strong> (AC).</p><p id="d7bd8c29-fcfc-4543-90cf-0c541ae4d073" class="">This simple rule governs the resolution of most tasks in D&amp;D play. Chapter 7, &quot;<a href="https://www.dndbeyond.com/compendium/rules/phb/using-ability-scores">Using Ability Scores</a>&quot; provides more detailed rules for using the d20 in the game.</p><h3 id="b5154db1-90b0-4f77-b5ed-f795fe6061c7" class="">Advantage and Disadvantage</h3><p id="73b27fb8-eadf-48cf-9fb0-7ba33ee09b40" class="">Sometimes an ability check, attack roll, or saving throw is modified by special situations called advantage and disadvantage. Advantage reflects the positive circumstances surrounding a d20 roll, while disadvantage reflects the opposite. When you have either advantage or disadvantage, you roll a second d20 when you make the roll. Use the higher of the two rolls if you have advantage, and use the lower roll if you have disadvantage. For example, if you have disadvantage and roll a 17 and a 5, you use the 5. If you instead have advantage and roll those numbers, you use the 17.</p><p id="e74ad76c-e6d8-43a4-8c01-d9875c8f5425" class="">More detailed rules for advantage and disadvantage are presented in <a href="https://www.dndbeyond.com/compendium/rules/phb/using-ability-scores">chapter 7</a>.</p><h3 id="474014f7-a542-4634-9a1b-0fd5138c2b11" class="">Specific Beats General</h3><p id="a0539361-3655-435c-8bb1-d657fd06676f" class="">This compendium contains rules that govern how the game plays. That said, many racial traits, class features, spells, magic items, monster abilities, and other game elements break the general rules in some way, creating an exception to how the rest of the game works. Remember this: If a specific rule contradicts a general rule, the specific rule wins.</p><p id="6972d8ec-3d23-488b-bd15-49f5fa161548" class="">Exceptions to the rules are often minor. For instance, many adventurers don’t have proficiency with longbows, but every wood elf does because of a racial trait. That trait creates a minor exception in the game. Other examples of rule-breaking are more conspicuous. For instance, an adventurer can’t normally pass through walls, but some spells make that possible. Magic accounts for most of the major exceptions to the rules.</p><h3 id="ab77fab5-d28e-4c6b-bdc6-df32c545c438" class="">Round Down</h3><p id="1c347ae9-6716-4b74-be1e-beb77192588b" class="">There’s one more general rule you need to know at the outset. Whenever you divide a number in the game, round down if you end up with a fraction, even if the fraction is one-half or greater.</p><h2 id="541bf3ca-ae02-434a-8516-73152dcd7575" class="">Adventures</h2><p id="48bb7de4-dda0-475d-a03a-86411668e0ce" class="">The Dungeons &amp; Dragons game consists of a group of characters embarking on an adventure that the Dungeon Master presents to them. Each character brings particular capabilities to the adventure in the form of ability scores and skills, class features, racial traits, equipment, and magic items. Every character is different, with various strengths and weaknesses, so the best party of adventurers is one in which the characters complement each other and cover the weaknesses of their companions. The adventurers must cooperate to successfully complete the adventure.</p><p id="3becf10e-180e-44e4-b019-70e5ea64f57d" class="">The adventure is the heart of the game, a story with a beginning, a middle, and an end. An adventure might be created by the Dungeon Master or purchased off the shelf, tweaked and modified to suit the DM’s needs and desires. In either case, an adventure features a fantastic setting, whether it’s an underground dungeon, a crumbling castle, a stretch of wilderness, or a bustling city. It features a rich cast of characters: the adventurers created and played by the other players at the table, as well as nonplayer characters (NPCs). Those characters might be patrons, allies, enemies, hirelings, or just background extras in an adventure. Often, one of the NPCs is a villain whose agenda drives much of an adventure’s action.</p><p id="2c90082e-3c2f-4fe5-ae38-0391772f6c60" class="">Over the course of their adventures, the characters are confronted by a variety of creatures, objects, and situations that they must deal with in some way. Sometimes the adventurers and other creatures do their best to kill or capture each other in combat. At other times, the adventurers talk to another creature (or even a magical object) with a goal in mind. And often, the adventurers spend time trying to solve a puzzle, bypass an obstacle, find something hidden, or unravel the current situation. Meanwhile, the adventurers explore the world, making decisions about which way to travel and what they’ll try to do next.</p><p id="34fb0c41-c81b-4764-ae8a-8dbbf716cb21" class="">Adventures vary in length and complexity. A short adventure might present only a few challenges, and it might take no more than a single game session to complete. A long adventure can involve hundreds of combats, interactions, and other challenges, and take dozens of sessions to play through, stretching over weeks or months of real time. Usually, the end of an adventure is marked by the adventurers heading back to civilization to rest and enjoy the spoils of their labors.</p><p id="bccded0b-26de-45b3-bae5-2a8a064bc736" class="">But that’s not the end of the story. You can think of an adventure as a single episode of a TV series, made up of multiple exciting scenes. A campaign is the whole series—a string of adventures joined together, with a consistent group of adventurers following the narrative from start to finish.</p><h3 id="947768c4-9262-4cd9-8fbb-31e231b31858" class="">The Three Pillars of Adventure</h3><p id="72dadbb8-9e0f-4e43-bd8a-c6e3810311b6" class="">Adventurers can try to do anything their players can imagine, but it can be helpful to talk about their activities in three broad categories: exploration, social interaction, and combat.</p><p id="9635ab53-04a2-4a69-9ddc-8f0c9029c1b8" class=""><strong>Exploration</strong> includes both the adventurers’ movement through the world and their interaction with objects and situations that require their attention. Exploration is the give-and-take of the players describing what they want their characters to do, and the Dungeon Master telling the players what happens as a result. On a large scale, that might involve the characters spending a day crossing a rolling plain or an hour making their way through caverns underground. On the smallest scale, it could mean one character pulling a lever in a dungeon room to see what happens.</p><p id="ffefc55f-6c99-4bc5-ab51-e707952e097e" class=""><strong>Social interaction</strong> features the adventurers talking to someone (or something) else. It might mean demanding that a captured scout reveal the secret entrance to the goblin lair, getting information from a rescued prisoner, pleading for mercy from an orc chieftain, or persuading a talkative magic mirror to show a distant location to the adventurers.</p><p id="627c1b2f-7fcc-49ee-a9f5-9a02ddbcc536" class="">The rules in part 2 (especially &quot;<a href="https://www.dndbeyond.com/compendium/rules/phb/using-ability-scores">Using Ability Scores</a>&quot; and &quot;<a href="https://www.dndbeyond.com/compendium/rules/phb/adventuring">Adventuring</a>&quot;) support exploration and social interaction, as do many class features in &quot;<a href="https://www.dndbeyond.com/compendium/rules/phb/classes">Classes</a>&quot; and personality traits in &quot;<a href="https://www.dndbeyond.com/compendium/rules/phb/personality-and-background">Personality and Background</a>.&quot;</p><p id="cbf1ad39-622b-449e-ace6-ea19c425d51e" class=""><strong>Combat</strong>, the focus of <a href="https://www.dndbeyond.com/compendium/rules/phb/combat">chapter 9</a>, involves characters and other creatures swinging weapons, casting spells, maneuvering for position, and so on—all in an effort to defeat their opponents, whether that means killing every enemy, taking captives, or forcing a rout. Combat is the most structured element of a D&amp;D session, with creatures taking turns to make sure that everyone gets a chance to act. Even in the context of a pitched battle, there’s still plenty of opportunity for adventurers to attempt wacky stunts like surfing down a flight of stairs on a shield, to examine the environment (perhaps by pulling a mysterious lever), and to interact with other creatures, including allies, enemies, and neutral parties.</p><h3 id="e46e4586-8d62-498c-871e-e7288a67889b" class="">The Wonders of Magic</h3><p id="5d6dc58c-31b8-4d67-b206-1a39f3acda93" class="">Few D&amp;D adventures end without something magical happening. Whether helpful or harmful, magic appears frequently in the life of an adventurer, and it is the focus of <a href="https://www.dndbeyond.com/compendium/rules/phb/spellcasting">part 3</a>.</p><p id="c404c827-2302-4134-8f4d-cc703fec9779" class="">In the worlds of Dungeons &amp; Dragons, practitioners of magic are rare, set apart from the masses of people by their extraordinary talent. Common folk might see evidence of magic on a regular basis, but it’s usually minor—a fantastic monster, a visibly answered prayer, a wizard walking through the streets with an animated shield guardian as a bodyguard.</p><p id="b3453557-d570-44f6-9741-3048293b2627" class="">For adventurers, though, magic is key to their survival. Without the healing magic of clerics and paladins, adventurers would quickly succumb to their wounds. Without the uplifting magical support of bards and clerics, warriors might be overwhelmed by powerful foes. Without the sheer magical power and versatility of wizards and druids, every threat would be magnified tenfold.</p><p id="9fad149c-6114-4f52-b57f-d6f4d687aedb" class="">Magic is also a favored tool of villains. Many adventures are driven by the machinations of spellcasters who are hellbent on using magic for some ill end. A cult leader seeks to awaken a god who slumbers beneath the sea, a hag kidnaps youths to magically drain them of their vigor, a mad wizard labors to invest an army of automatons with a facsimile of life, a dragon begins a mystical ritual to rise up as a god of destruction—these are just a few of the magical threats that adventurers might face. With magic of their own, in the form of spells and magic items, the adventurers might prevail!</p><figure id="584b355b-8f7c-4d3d-95e2-abb080918436" class="image"><a href="https://media-waterdeep.cursecdn.com/attachments/thumbnails/6/553/389/202/dice_2.png"><img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/6/553/389/202/dice_2.png"/></a></figure></div></article></body></html>
