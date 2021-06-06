@@ -25,7 +25,7 @@ function sound(thisRoll, sides) {
     }
     new Audio(`roll${newSound}.ogg`).play();
     oldSound = newSound;
-    if (thisRoll == sides) {
+    if (thisRoll == 20) {
         setTimeout(() => {
             new Audio('natural.ogg').play();
         }, 200);
@@ -49,7 +49,7 @@ function addDie(sides) {
     let dieNumber = roll(sides);
     let dieContainer = document.createElement("div");
     dieContainer.classList.add("dieContainer");
-    if (dieNumber == sides) {
+    if (dieNumber == 20) {
         dieContainer.classList.add("natural");
     }
     dieContainer.classList.toggle("showing");
@@ -88,7 +88,7 @@ function reRoll(e) {
     e.children[0].innerHTML = roll(sides);
     e.dataset.roll = e.children[0].innerHTML;
     let dieNumber = e.dataset.roll;
-    if (dieNumber == sides) {
+    if (dieNumber == 20) {
         e.parentNode.parentNode.classList.add("natural");
     } else {
         e.parentNode.parentNode.classList.remove("natural");
