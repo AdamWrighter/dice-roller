@@ -30,6 +30,11 @@ function sound(thisRoll, sides) {
             new Audio('natural.ogg').play();
         }, 200);
     }
+    if (thisRoll == 1 && sides == 20) {
+        setTimeout(() => {
+            new Audio('critfail.ogg').play();
+        }, 200);
+    }
 }
 
 // Roll using ranNum and calculate statistics
