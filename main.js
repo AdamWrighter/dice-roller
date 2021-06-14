@@ -1,5 +1,9 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+const dieObject = {
+    roll: 0,
+    sides: 0
+}
 
 // Serif font support
 if (urlParams.get('font') == 'serif') {
@@ -50,8 +54,13 @@ function roll(sides) {
 
 // Add new dice on clicking add die button
 
-function addDie(sides) {
-    let dieNumber = roll(sides);
+function addDie(sides, storedRoll, shouldCalcStats = true) {
+    let dieNumber = 0;
+    if (storedRoll) {
+        dieNumber = storedRoll;
+    } else {
+        dieNumber = roll(sides);
+    }
     let dieContainer = document.createElement("div");
     dieContainer.classList.add("dieContainer");
     if (dieNumber == 20) {
@@ -67,8 +76,22 @@ function addDie(sides) {
     setTimeout(() => {
         dieContainer.classList.toggle("showing");
     }, 100);
-    calcStats();
+    if (shouldCalcStats) {
+        calcStats();
+    }
 }
+
+function addDiceFromStorage() {
+    if (localStorage.getItem('dice')) {
+        let diceFromStorage = JSON.parse(localStorage.getItem('dice'));
+        for (let i = 0; i < diceFromStorage.length; i++) {
+            addDie(diceFromStorage[i].sides, diceFromStorage[i].roll, shouldCalcStats = false);
+        }
+        calcStats();
+    }
+}
+
+addDiceFromStorage();
 
 // Destroy one die
 
@@ -83,7 +106,8 @@ function removeDie(e) {
 // Destroy all dice
 
 function removeAllDice() {
-    document.querySelectorAll('.removeDie').forEach(el=>el.click())
+    document.querySelectorAll('.removeDie').forEach(el => el.click())
+    localStorage.removeItem('dice');
 }
 
 // Re-roll die when result is clicked
@@ -102,15 +126,11 @@ function reRoll(e) {
 }
 
 // Calculate total of rolls and hi & lo roll
-
-const die = {
-    roll: 0,
-    sides: 0
-}
+var dice = [];
 
 function calcStats() {
     let rolls = [];
-    let dice = [];
+    dice = [];
     let total = 0;
     let hi = 0;
     let lo = 0;
@@ -121,15 +141,13 @@ function calcStats() {
         total += thisRoll;
         hi = Math.max.apply(Math, rolls);
         lo = Math.min.apply(Math, rolls);
-        if (document.getElementById('remember').checked) {
-            let thisDie = Object.create(die);
-            thisDie.roll = thisRoll;
-            thisDie.sides = parseInt(diceElements[i].dataset.sides)
-            dice.push(thisDie);
-            localStorage.setItem('dice', dice);
-        }
+        let thisDie = Object.create(dieObject);
+        thisDie.roll = thisRoll;
+        thisDie.sides = parseInt(diceElements[i].dataset.sides)
+        dice.push(thisDie);
+        localStorage.setItem('dice', JSON.stringify(dice));
     }
-    document.querySelector('#total-container').innerHTML = `<span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo} | </span>`;
+    document.querySelector('#total-container').innerHTML = `<span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>`;
 }
 
 // Detect if page is in an iFrame
