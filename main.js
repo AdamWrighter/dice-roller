@@ -103,21 +103,33 @@ function reRoll(e) {
 
 // Calculate total of rolls and hi & lo roll
 
+const die = {
+    roll: 0,
+    sides: 0
+}
+
 function calcStats() {
-    let rollArray = [];
+    let rolls = [];
+    let dice = [];
     let total = 0;
     let hi = 0;
     let lo = 0;
     let diceElements = document.querySelectorAll('.dieContainer:not(.hiding) .dieNumber');
     for (i = 0; i < diceElements.length; i++) {
         let thisRoll = parseInt(diceElements[i].dataset.roll);
-        rollArray.push(thisRoll);
+        rolls.push(thisRoll);
         total += thisRoll;
-        hi = Math.max.apply(Math, rollArray);
-        lo = Math.min.apply(Math, rollArray);
+        hi = Math.max.apply(Math, rolls);
+        lo = Math.min.apply(Math, rolls);
+        if (document.getElementById('remember').checked) {
+            let thisDie = Object.create(die);
+            thisDie.roll = thisRoll;
+            thisDie.sides = parseInt(diceElements[i].dataset.sides)
+            dice.push(thisDie);
+            localStorage.setItem('dice', dice);
+        }
     }
-    var totalTemplate = `<span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>`
-    document.querySelector('#total-container').innerHTML = totalTemplate;
+    document.querySelector('#total-container').innerHTML = `<span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo} | </span>`;
 }
 
 // Detect if page is in an iFrame

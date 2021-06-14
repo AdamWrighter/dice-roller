@@ -68,6 +68,7 @@ button.dieNumber {
 
 #total-container {
     margin-bottom: 5px;
+    display: inline-block;
 }
 
 #dice {
