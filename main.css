@@ -106,13 +106,13 @@ button.dieNumber {
         color: rgba(255, 255, 255, 0.9);
     }
 
-    button {
+    button, .button {
         background-color: #313437;
         color: rgba(255, 255, 255, 0.9);
         border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
-    button:hover {
+    button:hover, .button:hover {
         background: rgb(71,76,80) none repeat scroll 0% 0%;
     }
 }
