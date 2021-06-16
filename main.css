@@ -22,7 +22,7 @@ body.embed {
     margin-right: 3px;
 }
 
-button {
+button, .button {
     transition: background 20ms ease-in 0s;
     font-size: 1rem;
     padding: 5px;
@@ -30,6 +30,7 @@ button {
     background-color: transparent;
     border: 1px solid rgba(55, 53, 47, 0.16);
     margin-bottom: 3px;
+    text-decoration: none;
 }
 
 button.dieNumber, button.removeDie {
@@ -41,12 +42,12 @@ button.dieNumber, button.removeDie {
 }
 
 
-button:hover {
+button:hover, .button:hover {
     background: rgba(55,53,47,0.08) none repeat;
     outline: none;
 }
 
-button:focus {
+button:focus, .button:focus {
     outline: none;
 }
 
