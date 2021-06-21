@@ -42,17 +42,14 @@ button.dieNumber, button.removeDie {
 }
 
 
-button:hover, .button:hover {
+button:hover, .button:hover,
+button:focus-visible, .button:focus-visible {
     background: rgba(55,53,47,0.08) none repeat;
     outline: none;
 }
 
 button:focus, .button:focus {
     outline: none;
-}
-
-button:active {
-    filter: brightness(0.95);
 }
 
 button.removeDie {
