@@ -1,17 +1,656 @@
-<!DOCTYPE html>
-<html lang="en">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Dice Roller help &amp; changelog</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dice Roller info</title>
-</head>
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
 
-<body>
-  <script>
-    window.location.href = "https://awright.notion.site/Dice-Roller-help-changelog-a6438d0a80a24a1c8b16ef53e13c915b";
-  </script>
-</body>
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
 
-</html>
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a6438d0a-80a2-4a1c-8b16-ef53e13c915b" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/twitter/282/game-die_1f3b2.png"/></div><h1 class="page-title">Dice Roller help &amp; changelog</h1></header><div class="page-body"><ul id="4be08e39-1ecf-4e9c-9d81-3477b9cfb9e9" class="toggle"><li><details><summary>Contents</summary><nav id="81d971d3-3c28-44c3-91a4-5ae7f43d2e07" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3b92df86-a74f-451d-bc92-2378e66b3c8f">How to use</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#817a747b-9c86-44d8-b55f-db42cc0594ed">Rolling a die</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#96da876a-bc09-4096-8d8e-a9380bcabfbf">Re-rolling a die</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1f2f4158-0820-45a0-b702-053ab193e900">Removing a die</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9d85b565-494c-426c-94ba-9dc6832f789d">Removing all dice</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3d5d60d0-81e3-4126-b67d-7169ea746cc2">Why is a die highlighted in gold?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ee487655-c7ba-43d4-a388-c348d24ec097">Why don&#x27;t the dice make sounds?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#84403435-c7f4-4176-9a62-906b5aeb83a4">I&#x27;ve enabled sounds. Now a weird sound is played if I roll a 1 on a d20. Why?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e30d6c9-ca3e-4687-a610-9b47e55f2f2c">I use the serif font option in my Notion character sheet!</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#12d2f8f9-596e-4b2c-838f-a9acde47a71e">Dark mode (if using <a href="https://www.reddit.com/r/Notion/comments/ng69uz/version_2_of_my_dungeons_dragons_character_sheet/">my Notion character sheet</a>)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0434fb10-98f3-4973-a37d-f62ecb1071a5">How do I know the rolls are fair?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a969a131-4edf-49c0-a8ec-40397794e417">Changelog</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dd69f47a-10d5-4730-87f2-d3694722242a"><time>@August 20, 2021</time></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1a462eb1-e85b-49b8-a3bc-00f15ce4163f"><time>@June 21, 2021</time> </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5872d387-f2b4-4fbd-b2e1-fa090c0be73c"><time>@June 16, 2021</time></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7464149e-38a3-44be-9709-494906219f84"><time>@June 14, 2021</time></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e145b79c-e825-4e6d-9b98-39acee46741e"><time>@June 6, 2021</time></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c638f8ae-ccac-4f8b-8d1b-dba4c2c5257e"><time>@May 18, 2021</time></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d8492a70-0fca-4c0d-983e-f2b2cdcd236d"><time>@May 17, 2021</time></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#59239830-7c82-4500-b61d-e61f204bca8c"><time>@May 3, 2021</time></a></div></nav></details></li></ul><div id="6c4e2638-1679-4ed7-9d2f-e5ed8b7f06e4" class="column-list"><div id="c7f3fb3d-1cf5-4d31-871c-058f58136838" style="width:50%" class="column"><h1 id="3b92df86-a74f-451d-bc92-2378e66b3c8f" class="">How to use</h1><hr id="a14971db-9e30-40bb-b9e1-0180088ac54a"/><h2 id="817a747b-9c86-44d8-b55f-db42cc0594ed" class="">Rolling a die</h2><p id="6f32e0ee-e83e-406e-b9f3-b7e77610e748" class="">Click one of the buttons at the top to roll that die.</p><hr id="ff3890e7-2b7f-46a8-af84-4b4de1c03347"/><h2 id="96da876a-bc09-4096-8d8e-a9380bcabfbf" class="">Re-rolling a die</h2><p id="1b6ae0b6-c9ec-4fdb-95c4-731ccddbe77a" class="">Click a die&#x27;s number to re-roll it.</p><hr id="b77de0de-58f0-444b-98cd-9957c2bb45d4"/><h2 id="1f2f4158-0820-45a0-b702-053ab193e900" class="">Removing a die</h2><p id="57a02fc4-35ae-461f-b40f-57380d37289d" class="">Click a die&#x27;s delete button <mark class="highlight-red_background">-</mark> to remove it.</p><hr id="d7057e3d-6e80-44a1-b08f-d24fee143020"/><h2 id="9d85b565-494c-426c-94ba-9dc6832f789d" class="">Removing all dice</h2><p id="4420c73c-ea09-489d-8fbc-3b50c105980f" class="">Click the <mark class="highlight-gray_background">🗑️</mark> button to remove all dice.</p><hr id="a23fb5ed-7c81-4972-a00c-822f6b6e62a6"/><h2 id="3d5d60d0-81e3-4126-b67d-7169ea746cc2" class="">Why is a die highlighted in gold?</h2><p id="6df74c73-2599-48ed-b490-87f794ed07bf" class="">That&#x27;s a natural 20! Nice one.</p><hr id="ad6b2a9e-b356-41c6-92d2-329d2e4b9fbd"/><h2 id="ee487655-c7ba-43d4-a388-c348d24ec097" class="">Why don&#x27;t the dice make sounds?</h2><p id="b1c6c567-679a-449a-8554-75fddab125c4" class="">A good question. Of course, click-clack number rocks should click-clack. To turn on sounds, add <code>?sound=true</code> to the URL, e.g. <a href="https://dice.adamw.uk/?sound=true">https://dice.adamw.uk/?sound=true</a>. This will also enable fun sound effects for d20 rolls of 20 and 1.</p><h3 id="84403435-c7f4-4176-9a62-906b5aeb83a4" class="">I&#x27;ve enabled sounds. Now a weird sound is played if I roll a 1 on a d20. Why?</h3><p id="0b09d701-db1b-4fb1-8b75-7fc262006188" class="">This is the critical failure sound! If your DM doesn&#x27;t care that you rolled a natural 1 then you can ignore it - there aren&#x27;t any &quot;official&quot; D&amp;D 5e rules about it. However, lots of DMs like to have fun with players who roll a natural 1. In the same way as rolling a 20 on a d20 is a critical hit or a critical success, this might be called a &quot;critical failure&quot;.</p><hr id="250b797a-a928-4a3f-ba38-7795788adb10"/><h2 id="8e30d6c9-ca3e-4687-a610-9b47e55f2f2c" class="">I use the serif font option in my Notion character sheet!</h2><p id="b7f6ab4f-151e-4ffc-9c26-260bf73e680a" class="">Nice, so do I. The dice roller can account for this - just add <code>?font=serif</code> to the URL, e.g. <a href="https://dice.adamw.uk/?font=serif">https://dice.adamw.uk/?font=serif</a>.</p><p id="1365ea0f-8aa6-4e77-be18-0d0502baab73" class="">If you want to use both sounds and the serif font, the URL would be <a href="https://dice.adamw.uk/?sound=true&amp;font=serif">https://dice.adamw.uk/?sound=true&amp;font=serif</a>.</p><hr id="a51ad237-e5c2-4a68-8d49-24614471b062"/><h2 id="12d2f8f9-596e-4b2c-838f-a9acde47a71e" class="">Dark mode (if using <a href="https://www.reddit.com/r/Notion/comments/ng69uz/version_2_of_my_dungeons_dragons_character_sheet/">my Notion character sheet</a>)</h2><p id="52707318-c07f-4790-8173-98fc60636e6a" class="">The dice roller is implemented into Notion using a standard <a href="https://www.notion.so/Embeds-6b7133323590447b9d8e963c136ebce5">Embed block</a>. There&#x27;s no way for Notion to pass through its own dark mode setting to embedded web apps like this one, so if you have manually set Notion to light or dark mode, the dice roller might not match.</p><p id="d12fbeb2-4837-467f-8081-1691d850bcbe" class="">Instead, I recommend setting Notion&#x27;s appearance setting to &quot;Use system setting&quot;. This will make Notion follow your operating system or browser&#x27;s dark mode switch, and the dice roller automatically does the same - so they should appear to be in sync with one another if you use this setting.</p><hr id="edb9a5cf-a0ae-40d4-9768-578968d31d54"/><h2 id="0434fb10-98f3-4973-a37d-f62ecb1071a5" class="">How do I know the rolls are fair?</h2><p id="574c330b-5494-4a63-ab91-2cca3efc56b0" class="">See <a href="https://www.notion.so/Technical-stuff-f0fc11a76cb4407dbfcfaef6583be6bf"><span class="icon">🔢</span>Technical stuff</a> for information on how the rolls are generated.</p></div><div id="48cab7d9-6528-4344-beba-553a8fa00ac8" style="width:50%" class="column"><h1 id="a969a131-4edf-49c0-a8ec-40397794e417" class="">Changelog</h1><h2 id="dd69f47a-10d5-4730-87f2-d3694722242a" class=""><time>@December 15, 2021</time></h2><ul id="641cc185-f73f-4f1b-94ab-d6667048d71f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> d100s! You can now roll a percentile die by clicking the "+d100" button.</li><li style="list-style-type:disc"><mark class="highlight-blue_background"><strong>Tweak!</strong></mark> Moved the remove all and help buttons next to the total counter. Better use of space!</li><li style="list-style-type:disc"><mark class="highlight-red_background"><strong>Fix!</strong></mark> If there is only one die left, and you use its own remove button to remove it (rather than the "remove all" button), local storage will be properly cleared so when you refresh the page the removed die doesn't reappear.</li></ul><hr id="43a95d24-bed6-4e07-866d-947d7a913a5d"/><h2 id="dd69f47a-10d5-4730-87f2-d3694722242a" class=""><time>@August 20, 2021</time></h2><ul id="641cc185-f73f-4f1b-94ab-d6667048d71f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background"><strong>Tweak!</strong></mark> Change info link to account for new Notion public page URLs.</li></ul><hr id="43a95d24-bed6-4e07-866d-947d7a913a5d"/><h2 id="1a462eb1-e85b-49b8-a3bc-00f15ce4163f" class=""><time>@June 21, 2021</time> </h2><ul id="f72b2012-3792-450d-b33c-c71570461010" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background"><strong>Tweak!</strong></mark> Improve visibility for button focus when using a keyboard to navigate.</li></ul><hr id="ae43ff24-1f49-49e1-a344-f0f7d109d1a1"/><h2 id="5872d387-f2b4-4fbd-b2e1-fa090c0be73c" class=""><time>@June 16, 2021</time></h2><ul id="b919c17e-5397-4946-b945-b996780fdd3f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> Add a link to this page to the app (the <mark class="highlight-gray_background">❔</mark> button next to the <mark class="highlight-gray_background">🗑️</mark> button).</li></ul><hr id="c0404e6a-7a77-4ddd-ae98-cb1b9544d177"/><h2 id="7464149e-38a3-44be-9709-494906219f84" class=""><time>@June 14, 2021</time></h2><ul id="35b87dcd-9430-4174-8f22-c5980e56af9f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> Your rolls will now be remembered when the page is refreshed - useful if you want to check something else on Notion and still be able to refer to your last roll! To clear your rolls, just click the <mark class="highlight-gray_background">🗑️</mark> button.</li></ul><hr id="b71968da-8ed1-4a29-997d-93b302838a66"/><h2 id="e145b79c-e825-4e6d-9b98-39acee46741e" class=""><time>@June 6, 2021</time></h2><ul id="0ff867c2-5b3d-4579-b059-c5d2e390d4ef" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> Critical failure sound. If you roll a 1 on a d20 and have sound turned on, you will here a critical failure sound. I hope this makes you feel better about yourself.</li></ul><ul id="bacc223d-ee6c-40af-8091-c518554bae6e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red_background"><strong>Fix!</strong></mark> Only rolls of 20 will be highlighted as critical successes. Previously, any die that rolled the highest number possible for that die would be highlighted as a critical success - that wasn&#x27;t right, only d20s should do this.</li></ul><hr id="2d698d44-b80c-4ba4-9a1f-6429c1e8e810"/><h2 id="c638f8ae-ccac-4f8b-8d1b-dba4c2c5257e" class=""><time>@May 18, 2021</time></h2><ul id="28acdd19-869d-492c-992f-16a8a8abbff3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background"><strong>Tweak!</strong></mark> Font size is now a little smaller, to better fit in with how Notion looks.</li></ul><hr id="8337f0e1-a82b-4beb-aed6-98b10c10571a"/><h2 id="d8492a70-0fca-4c0d-983e-f2b2cdcd236d" class=""><time>@May 17, 2021</time></h2><ul id="ac3ec12c-84de-424d-852f-5b1222f64165" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> Added support for using a serif font instead of the default sans serif. If you use the serif font in your character sheet, the dice roller will now fit in much better. To use this, add a <code>&amp;font=serif</code> parameter to the URL of the embed, e.g. <a href="https://dice.adamw.uk/?sound=true&amp;font=serif">https://dice.adamw.uk/?sound=true&amp;font=serif</a>.</li></ul><hr id="ea10df23-195e-4bcf-abe1-465156458012"/><h2 id="59239830-7c82-4500-b61d-e61f204bca8c" class=""><time>@May 3, 2021</time></h2><ul id="cfcff73e-3cbd-486a-b544-95b930a9c8ef" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> Critical success highlighting. If you roll a 20 with a d20, the die will be highlighted in gold. If you have sound enabled, a critical hit sound will play. (It feels so good when this happens.)</li></ul><ul id="f1d551f3-6b38-474f-b836-85be573700fd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>New!</strong></mark> Remove all dice button. A <mark class="highlight-gray_background">🗑️</mark> button has been added. Clicking this removes all existing dice.</li></ul><ul id="682b3e6a-4c31-4179-bd2c-9440473f9656" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background"><strong>Tweak!</strong></mark> Improved button styling. Styling for buttons has been tweaked and prettified to better fit in with how buttons look in Notion. The app now feels super native.</li></ul></div></div></div></article></body></html>
