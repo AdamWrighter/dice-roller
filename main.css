@@ -64,9 +64,17 @@ button.dieNumber {
     width: 70px;
 }
 
+button.dieNumber[data-sides="100"] {
+    width: 90px;
+}
+
 #total-container {
     margin-bottom: 5px;
     display: inline-block;
+}
+
+.total {
+    margin-right: 3px;
 }
 
 #dice {

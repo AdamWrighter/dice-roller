@@ -29,7 +29,7 @@ function sound(thisRoll, sides) {
     }
     new Audio(`sound/roll${newSound}.ogg`).play();
     oldSound = newSound;
-    if (thisRoll == 20) {
+    if (sides == 20 && thisRoll == 20) {
         setTimeout(() => {
             new Audio('sound/natural.ogg').play();
         }, 200);
@@ -63,11 +63,11 @@ function addDie(sides, storedRoll, shouldCalcStats = true) {
     }
     let dieContainer = document.createElement("div");
     dieContainer.classList.add("dieContainer");
-    if (dieNumber == 20) {
+    if (sides == 20 && dieNumber == 20) {
         dieContainer.classList.add("natural");
     }
     dieContainer.classList.toggle("showing");
-    var dieTemplate = `<div class="die">
+    let dieTemplate = `<div class="die">
             <button class="dieNumber" onclick="reRoll(this)" data-sides="${sides}" data-roll="${dieNumber}"><strong class="number">${dieNumber}</strong> (${sides})</span>
             <button class="removeDie" onclick="removeDie(this)">−</button>
         </div>`
@@ -100,6 +100,9 @@ function removeDie(e) {
     setTimeout(() => {
         e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
     }, 100);
+    if (document.querySelectorAll('.dieContainer:not(.hiding)').length == 0) {
+        localStorage.removeItem('dice');
+    }
     calcStats();
 }
 
@@ -128,6 +131,16 @@ function reRoll(e) {
 // Calculate total of rolls and hi & lo roll
 var dice = [];
 
+function constructTotals(total,hi,lo) {
+    document.querySelector('#total-container').innerHTML = `
+        <span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>
+        <button id="destroy" onclick="removeAllDice()">🗑️</button>
+        <a class="button" id="info" href="/info" target="_blank">❔</a>
+    `;
+}
+
+constructTotals(0,0,0);
+
 function calcStats() {
     let rolls = [];
     dice = [];
@@ -147,7 +160,7 @@ function calcStats() {
         dice.push(thisDie);
         localStorage.setItem('dice', JSON.stringify(dice));
     }
-    document.querySelector('#total-container').innerHTML = `<span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>`;
+    constructTotals(total,hi,lo);
 }
 
 // Detect if page is in an iFrame
