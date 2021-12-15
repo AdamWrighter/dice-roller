@@ -27,16 +27,16 @@ function sound(thisRoll, sides) {
     while (newSound == oldSound) {
         newSound = ranNum(10);
     }
-    new Audio(`roll${newSound}.ogg`).play();
+    new Audio(`sound/roll${newSound}.ogg`).play();
     oldSound = newSound;
     if (thisRoll == 20) {
         setTimeout(() => {
-            new Audio('natural.ogg').play();
+            new Audio('sound/natural.ogg').play();
         }, 200);
     }
     if (thisRoll == 1 && sides == 20) {
         setTimeout(() => {
-            new Audio('critfail.ogg').play();
+            new Audio('sound/critfail.ogg').play();
         }, 200);
     }
 }
