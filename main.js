@@ -81,6 +81,16 @@ function addDie(sides, storedRoll, shouldCalcStats = true) {
     }
 }
 
+function constructTotals(total,hi,lo) {
+    document.querySelector('#total-container').innerHTML = `
+        <span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>
+        <button id="destroy" onclick="removeAllDice()">🗑️</button>
+        <a class="button" id="info" href="/info" target="_blank">❔</a>
+    `;
+}
+
+constructTotals(0,0,0);
+
 function addDiceFromStorage() {
     if (localStorage.getItem('dice')) {
         let diceFromStorage = JSON.parse(localStorage.getItem('dice'));
@@ -120,7 +130,7 @@ function reRoll(e) {
     e.children[0].innerHTML = roll(sides);
     e.dataset.roll = e.children[0].innerHTML;
     let dieNumber = e.dataset.roll;
-    if (dieNumber == 20) {
+    if (sides == 20 && dieNumber == 20) {
         e.parentNode.parentNode.classList.add("natural");
     } else {
         e.parentNode.parentNode.classList.remove("natural");
@@ -130,16 +140,6 @@ function reRoll(e) {
 
 // Calculate total of rolls and hi & lo roll
 var dice = [];
-
-function constructTotals(total,hi,lo) {
-    document.querySelector('#total-container').innerHTML = `
-        <span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>
-        <button id="destroy" onclick="removeAllDice()">🗑️</button>
-        <a class="button" id="info" href="/info" target="_blank">❔</a>
-    `;
-}
-
-constructTotals(0,0,0);
 
 function calcStats() {
     let rolls = [];
