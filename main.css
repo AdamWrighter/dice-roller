@@ -107,12 +107,12 @@ button.dieNumber[data-sides="100"] {
 }
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #2F3437;
+        background-color: #191919;
         color: rgba(255, 255, 255, 0.9);
     }
 
     button, .button {
-        background-color: #313437;
+        background-color: #262626;
         color: rgba(255, 255, 255, 0.9);
         border: 1px solid rgba(255, 255, 255, 0.14);
     }
