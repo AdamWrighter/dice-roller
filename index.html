@@ -36,16 +36,27 @@
 </head>
 
 <body class="hidden">
-    <div id="total-container">
+    <div class="top-buttons">
+        <div id="total-container">
+        </div>
+        <div id="buttons-container">
+            <button id="toggle-count-input" onclick="toggleCountInput()"  type="button">🔢⬇️</button>
+            <button id="destroy" onclick="removeAllDice()" type="button">🗑️</button>
+            <a class="button" id="info" href="/info" target="_blank">❔</a>
+        </div>
+    </div>
+    <div id="dice-count-container" class="hidden">
+        <label for="dice-count-input">Roll this many:</label>
+        <input type="number" id="dice-count-input" value="1">
     </div>
     <div id="dice-buttons">
-        <button id="d20" onclick="addDie(20)">+d20</button>
-        <button id="d12" onclick="addDie(12)">+d12</button>
-        <button id="d10" onclick="addDie(10)">+d10</button>
-        <button id="d8" onclick="addDie(8)">+d8</button>
-        <button id="d6" onclick="addDie(6)">+d6</button>
-        <button id="d4" onclick="addDie(4)">+d4</button>
-        <button id="d100" onclick="addDie(100)">+d100</button>
+        <button id="d20" onclick="addDie(20)" type="button">+d20</button>
+        <button id="d12" onclick="addDie(12)" type="button">+d12</button>
+        <button id="d10" onclick="addDie(10)" type="button">+d10</button>
+        <button id="d8" onclick="addDie(8)" type="button">+d8</button>
+        <button id="d6" onclick="addDie(6)" type="button">+d6</button>
+        <button id="d4" onclick="addDie(4)" type="button">+d4</button>
+        <button id="d100" onclick="addDie(100)" type="button">+d100</button>
     </div>
     <div id="dice"></div>
     <small>Like this tool? Please take a <a href="https://tripetto.app/run/VGRA6Q849I" target="_blank">quick survey</a>.<small>

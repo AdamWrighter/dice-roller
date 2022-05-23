@@ -55,41 +55,43 @@ function roll(sides) {
 // Add new dice on clicking add die button
 
 function addDie(sides, storedRoll, shouldCalcStats = true) {
-    let dieNumber = 0;
-    if (storedRoll) {
-        dieNumber = storedRoll;
-    } else {
-        dieNumber = roll(sides);
-    }
-    let dieContainer = document.createElement("div");
-    dieContainer.classList.add("dieContainer");
-    if (sides == 20 && dieNumber == 20) {
-        dieContainer.classList.add("natural");
-    }
-    dieContainer.classList.toggle("showing");
-    let dieTemplate = `<div class="die">
+    let diceCountInput = document.querySelector('#dice-count-input');
+    let diceCount = diceCountInput.value;
+    for (let i = 0; i < diceCount; i++) {
+        let dieNumber = 0;
+        if (storedRoll) {
+            dieNumber = storedRoll;
+        } else {
+            dieNumber = roll(sides);
+        }
+        let dieContainer = document.createElement("div");
+        dieContainer.classList.add("dieContainer");
+        if (sides == 20 && dieNumber == 20) {
+            dieContainer.classList.add("natural");
+        }
+        dieContainer.classList.toggle("showing");
+        let dieTemplate = `<div class="die">
             <button class="dieNumber" onclick="reRoll(this)" data-sides="${sides}" data-roll="${dieNumber}"><strong class="number">${dieNumber}</strong> (${sides})</span>
             <button class="removeDie" onclick="removeDie(this)">−</button>
         </div>`
-    dieContainer.innerHTML = dieTemplate;
-    document.querySelector('#dice').appendChild(dieContainer);
-    setTimeout(() => {
-        dieContainer.classList.toggle("showing");
-    }, 100);
+        dieContainer.innerHTML = dieTemplate;
+        document.querySelector('#dice').appendChild(dieContainer);
+        setTimeout(() => {
+            dieContainer.classList.toggle("showing");
+        }, 100);
+    }
     if (shouldCalcStats) {
         calcStats();
     }
 }
 
-function constructTotals(total,hi,lo) {
+function constructTotals(total, hi, lo) {
     document.querySelector('#total-container').innerHTML = `
         <span class="total">Total: ${total} | Hi: ${hi} | Lo: ${lo}</span>
-        <button id="destroy" onclick="removeAllDice()">🗑️</button>
-        <a class="button" id="info" href="/info" target="_blank">❔</a>
     `;
 }
 
-constructTotals(0,0,0);
+constructTotals(0, 0, 0);
 
 function addDiceFromStorage() {
     if (localStorage.getItem('dice')) {
@@ -119,8 +121,9 @@ function removeDie(e) {
 // Destroy all dice
 
 function removeAllDice() {
-    document.querySelectorAll('.removeDie').forEach(el => el.click())
-    localStorage.removeItem('dice');
+    document.querySelector('#dice').innerHTML = "";
+    localStorage.clear();
+    calcStats();
 }
 
 // Re-roll die when result is clicked
@@ -160,7 +163,7 @@ function calcStats() {
         dice.push(thisDie);
         localStorage.setItem('dice', JSON.stringify(dice));
     }
-    constructTotals(total,hi,lo);
+    constructTotals(total, hi, lo);
 }
 
 // Detect if page is in an iFrame
@@ -176,4 +179,15 @@ function inIframe() {
 // If an an iFrame, add class to body for reduced margins
 if (inIframe()) {
     document.body.classList.add("embed");
+}
+
+function toggleCountInput() {
+    let diceCountContainer = document.querySelector('#dice-count-container');
+    diceCountContainer.classList.toggle('hidden');
+    // If #toggle-count-input contains "⬇️"
+    if (document.querySelector('#toggle-count-input').innerHTML.includes('⬇️')) {
+        document.querySelector('#toggle-count-input').innerHTML = "🔢⬆️";
+    } else {
+        document.querySelector('#toggle-count-input').innerHTML = "🔢⬇️";
+    }
 }
