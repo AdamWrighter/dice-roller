@@ -43,6 +43,10 @@ button, .button, input {
     text-decoration: none;
 }
 
+input {
+    width: 60px;
+}
+
 #add-custom-die {
     margin-bottom: 0;
     border-radius: 0 var(--spacing) var(--spacing) 0;
