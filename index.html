@@ -40,14 +40,20 @@
         <div id="total-container">
         </div>
         <div id="buttons-container">
-            <button id="toggle-count-input" onclick="toggleCountInput()"  type="button">🔢⬇️</button>
+            <button id="toggle-count-input" onclick="toggleCountInput()" type="button">⚙️⬇️</button>
             <button id="destroy" onclick="removeAllDice()" type="button">🗑️</button>
             <a class="button" id="info" href="/info" target="_blank">❔</a>
         </div>
     </div>
-    <div id="dice-count-container" class="hidden">
-        <label for="dice-count-input">Roll this many:</label>
-        <input type="number" id="dice-count-input" value="1">
+    <div id="config-container" class="hidden">
+        <div>
+            <label for="dice-count-input">Roll this many:</label>
+            <input type="number" id="dice-count-input" value="1">
+        </div>
+        <div>
+            <label for="custom-die-input">Add custom die:</label>
+            <input type="number" id="custom-die-input" value=""><button id="add-custom-die"  onclick="addCustomDie()">+</button>
+        </div>
     </div>
     <div id="dice-buttons">
         <button id="d20" onclick="addDie(20)" type="button">+d20</button>
@@ -59,9 +65,10 @@
         <button id="d100" onclick="addDie(100)" type="button">+d100</button>
     </div>
     <div id="dice"></div>
-    <small>Like this tool? Please take a <a href="https://tripetto.app/run/VGRA6Q849I" target="_blank">quick survey</a>.<small>
+    <small>Like this tool? Please take a <a href="https://tripetto.app/run/VGRA6Q849I" target="_blank">quick
+            survey</a>.<small>
 
-    <script src="main.js"></script>
+            <script src="main.js"></script>
 </body>
 
 </html>

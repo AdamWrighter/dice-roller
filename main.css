@@ -1,3 +1,8 @@
+/* Root variables */
+:root {
+    --spacing: 3px;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
     background-color: #fff;
@@ -11,7 +16,7 @@ body.serif button {
 
 body.embed {
     margin: 5px 0 0 0;
-    padding-left: 3px;
+    padding-left: var(--spacing);
 }
 
 .hidden {
@@ -20,27 +25,36 @@ body.embed {
 
 #dice-buttons {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #dice-buttons button:not(:last-child) {
-    margin-right: 3px;
+    margin-right: var(--spacing);
 }
 
 button, .button, input {
     transition: background 20ms ease-in 0s;
     font-size: 1rem;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: var(--spacing);
     background-color: transparent;
     border: 1px solid rgba(55, 53, 47, 0.16);
-    margin-bottom: 3px;
+    margin-bottom: var(--spacing);
     text-decoration: none;
+}
+
+#add-custom-die {
+    margin-bottom: 0;
+    border-radius: 0 var(--spacing) var(--spacing) 0;
+    border-left: 0px;
+    background-color: #3aa15b;
+    color: #fff;
 }
 
 .top-buttons {
     display: flex;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: var(--spacing);
 }
 
 .top-buttons button {
@@ -48,16 +62,26 @@ button, .button, input {
 }
 
 #total-container {
-    margin-right: 3px;
+    margin-right: var(--spacing);
 }
 
-#dice-count-container {
-    margin-bottom: 3px;
+#config-container {
+    margin-bottom: var(--spacing);
 }
 
-#dice-count-container input {
+#config-container input {
     margin-bottom: 0;
-    margin-left: 3px;
+    margin-left: var(--spacing);
+}
+
+input#custom-die-input {
+    border-radius: var(--spacing) 0 0 var(--spacing);
+    border-right: 0px;
+    margin-right: 0;
+}
+
+#config-container > div:not(:last-child) {
+    margin-bottom: var(--spacing);
 }
 
 button.dieNumber, button.removeDie {
@@ -65,9 +89,8 @@ button.dieNumber, button.removeDie {
 }
 
 .dieContainer {
-    margin-bottom: 3px;
+    margin-bottom: var(--spacing);
 }
-
 
 button:hover, .button:hover,
 button:focus-visible, .button:focus-visible {
@@ -81,33 +104,38 @@ button:focus, .button:focus {
 
 button.removeDie {
     border-left: 0px;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 var(--spacing) var(--spacing) 0;
     background-color: #FE7369;
     color: rgba(255, 255, 255, 0.9);
 }
 
 button.dieNumber {
-    border-radius: 3px 0 0 3px;
-    width: 70px;
+    border-radius: var(--spacing) 0 0 var(--spacing);
+    width: fit-content;
 }
 
-button.dieNumber[data-sides="100"] {
-    width: 90px;
+.customDieContainer {
+    margin-right: var(--spacing);
+}
+
+button.customDieButton {
+    border-radius: var(--spacing) 0 0 var(--spacing);
+    margin-right: 0 !important;
 }
 
 .total {
-    margin-right: 3px;
+    margin-right: var(--spacing);
 }
 
 #dice {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 3px;
+    margin-top: var(--spacing);
 }
 
 .die {
-    margin-right: 3px;
-    border-radius: 3px;
+    margin-right: var(--spacing);
+    border-radius: var(--spacing);
 }
 
 .dieContainer.showing {
@@ -124,7 +152,7 @@ button.dieNumber[data-sides="100"] {
 }
 
 .natural .die {
-    /* box-shadow: 0 0 3px 0 gold; */
+    /* box-shadow: 0 0 var(--spacing) 0 gold; */
     animation: buttonglow 200ms ease-in-out forwards;
 }
 @media (prefers-color-scheme: dark) {
@@ -179,6 +207,6 @@ button.dieNumber[data-sides="100"] {
         box-shadow: 0 0 50px 0 gold;
     }
     100% {
-        box-shadow: 0 0 3px 0 gold;
+        box-shadow: 0 0 var(--spacing) 0 gold;
     }
 }

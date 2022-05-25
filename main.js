@@ -122,6 +122,12 @@ function removeDie(e) {
 
 function removeAllDice() {
     document.querySelector('#dice').innerHTML = "";
+
+    let customDieContainers = document.querySelectorAll('.customDieContainer');
+    for (let i = 0; i < customDieContainers.length; i++) {
+        customDieContainers[i].parentNode.removeChild(customDieContainers[i]);
+    }
+
     localStorage.clear();
     calcStats();
 }
@@ -161,8 +167,8 @@ function calcStats() {
         thisDie.roll = thisRoll;
         thisDie.sides = parseInt(diceElements[i].dataset.sides)
         dice.push(thisDie);
-        localStorage.setItem('dice', JSON.stringify(dice));
     }
+    localStorage.setItem('dice', JSON.stringify(dice));
     constructTotals(total, hi, lo);
 }
 
@@ -182,12 +188,69 @@ if (inIframe()) {
 }
 
 function toggleCountInput() {
-    let diceCountContainer = document.querySelector('#dice-count-container');
+    let diceCountContainer = document.querySelector('#config-container');
     diceCountContainer.classList.toggle('hidden');
     // If #toggle-count-input contains "⬇️"
     if (document.querySelector('#toggle-count-input').innerHTML.includes('⬇️')) {
-        document.querySelector('#toggle-count-input').innerHTML = "🔢⬆️";
+        document.querySelector('#toggle-count-input').innerHTML = "⚙️⬆️";
     } else {
-        document.querySelector('#toggle-count-input').innerHTML = "🔢⬇️";
+        document.querySelector('#toggle-count-input').innerHTML = "⚙️⬇️";
     }
 }
+
+// Add custom die
+function addCustomDie(sides=document.querySelector('#custom-die-input').value) {
+    let customDieTemplate = `
+        <div class="customDieContainer">
+            <button class="customDieButton" id="d${sides}" onclick="addDie(${sides})" type="button">+d${sides}</button><button class="removeDie" onclick="removeDieButton(this)">−</button>
+        </div>
+    `;
+
+    document.querySelector('#dice-buttons').innerHTML += customDieTemplate;
+
+    document.querySelector('#custom-die-input').value = "";
+
+    storeCustomDice();
+}
+
+// Custom die input event listener
+document.querySelector('#custom-die-input').addEventListener('keyup', function(e) {
+    if (e.keyCode == 13) {
+        addCustomDie();
+    }
+});
+
+// Remove custom die button
+function removeDieButton(e) {
+    e.parentNode.parentNode.removeChild(e.parentNode);
+    storeCustomDice();
+}
+
+// Store custom dice
+function storeCustomDice() {
+    let customDieContainers = document.querySelectorAll('.customDieContainer');
+
+    let customDice = [];
+
+    for (let i = 0; i < customDieContainers.length; i++) {
+        let thisDie = customDieContainers[i].children[0].id;
+        let thisDieValue = thisDie.substring(1);
+        let thisDieObject = Object.create(dieObject);
+        thisDieObject.sides = thisDieValue;
+        customDice.push(thisDieObject);
+    }
+
+    localStorage.setItem('customDice', JSON.stringify(customDice));
+}
+
+// Add custom dice from storage
+function addCustomDiceFromStorage() {
+    if (localStorage.getItem('customDice')) {
+        let customDiceFromStorage = JSON.parse(localStorage.getItem('customDice'));
+        for (let i = 0; i < customDiceFromStorage.length; i++) {
+            addCustomDie(customDiceFromStorage[i].sides);
+        }
+    }
+}
+
+addCustomDiceFromStorage();
