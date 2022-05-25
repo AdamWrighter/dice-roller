@@ -199,22 +199,24 @@ function toggleCountInput() {
 }
 
 // Add custom die
-function addCustomDie(sides=document.querySelector('#custom-die-input').value) {
-    let customDieTemplate = `
-        <div class="customDieContainer">
-            <button class="customDieButton" id="d${sides}" onclick="addDie(${sides})" type="button">+d${sides}</button><button class="removeDie" onclick="removeDieButton(this)">−</button>
-        </div>
-    `;
+function addCustomDie(sides = document.querySelector('#custom-die-input').value) {
+    if (sides > 0) {
+        let customDieTemplate = `
+            <div class="customDieContainer">
+                <button class="customDieButton" id="d${sides}" onclick="addDie(${sides})" type="button">+d${sides}</button><button class="removeDie" onclick="removeDieButton(this)">−</button>
+            </div>
+        `;
 
-    document.querySelector('#dice-buttons').innerHTML += customDieTemplate;
+        document.querySelector('#dice-buttons').innerHTML += customDieTemplate;
 
-    document.querySelector('#custom-die-input').value = "";
+        document.querySelector('#custom-die-input').value = "";
 
-    storeCustomDice();
+        storeCustomDice();
+    }
 }
 
 // Custom die input event listener
-document.querySelector('#custom-die-input').addEventListener('keyup', function(e) {
+document.querySelector('#custom-die-input').addEventListener('keyup', function (e) {
     if (e.keyCode == 13) {
         addCustomDie();
     }
