@@ -71,8 +71,8 @@ function addDie(sides, storedRoll, shouldCalcStats = true) {
         }
         dieContainer.classList.toggle("showing");
         let dieTemplate = `<div class="die">
-            <button class="dieNumber" onclick="reRoll(this)" data-sides="${sides}" data-roll="${dieNumber}"><strong class="number">${dieNumber}</strong> (${sides})</span>
-            <button class="removeDie" onclick="removeDie(this)">−</button>
+            <button class="dieNumber" onclick="reRoll(this)" data-sides="${sides}" data-roll="${dieNumber}" title="Reroll this d${sides}"><strong class="number">${dieNumber}</strong> (${sides})</span>
+            <button class="removeDie" onclick="removeDie(this)" title="Remove this d${sides}">−</button>
         </div>`
         dieContainer.innerHTML = dieTemplate;
         document.querySelector('#dice').appendChild(dieContainer);
@@ -203,7 +203,7 @@ function addCustomDie(sides = document.querySelector('#custom-die-input').value)
     if (sides > 0) {
         let customDieTemplate = `
             <div class="customDieContainer">
-                <button class="customDieButton" id="d${sides}" onclick="addDie(${sides})" type="button">+d${sides}</button><button class="removeDie" onclick="removeDieButton(this)">−</button>
+                <button class="customDieButton" id="d${sides}" onclick="addDie(${sides})" type="button" title="Add a d${sides}">+d${sides}</button><button class="removeDie" onclick="removeDieButton(this)">−</button>
             </div>
         `;
 
