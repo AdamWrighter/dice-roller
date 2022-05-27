@@ -48,7 +48,6 @@ function roll(sides) {
     if (urlParams.get('sound') == 'true') {
         sound(thisRoll, sides);
     }
-    calcStats();
     return thisRoll;
 }
 
@@ -134,7 +133,7 @@ function removeAllDice() {
 
 // Re-roll die when result is clicked
 
-function reRoll(e) {
+function reRoll(e, shouldCalcStats = true) {
     let sides = e.dataset.sides;
     e.children[0].innerHTML = roll(sides);
     e.dataset.roll = e.children[0].innerHTML;
@@ -144,7 +143,9 @@ function reRoll(e) {
     } else {
         e.parentNode.parentNode.classList.remove("natural");
     }
-    calcStats();
+    if (shouldCalcStats) {
+        calcStats();
+    }
 }
 
 // Calculate total of rolls and hi & lo roll
@@ -170,6 +171,7 @@ function calcStats() {
     }
     localStorage.setItem('dice', JSON.stringify(dice));
     constructTotals(total, hi, lo);
+    console.log('Calcstats run');
 }
 
 // Detect if page is in an iFrame
@@ -261,6 +263,7 @@ addCustomDiceFromStorage();
 function rerollAll() {
     let diceNumbers = document.querySelectorAll('.dieNumber');
     for (let i = 0; i < diceNumbers.length; i++) {
-        diceNumbers[i].click();
+        reRoll(diceNumbers[i], shouldCalcStats = false);
     };
+    calcStats();
 }
