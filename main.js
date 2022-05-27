@@ -256,3 +256,11 @@ function addCustomDiceFromStorage() {
 }
 
 addCustomDiceFromStorage();
+
+// Reroll all dice
+function rerollAll() {
+    let diceNumbers = document.querySelectorAll('.dieNumber');
+    for (let i = 0; i < diceNumbers.length; i++) {
+        diceNumbers[i].click();
+    };
+}
