@@ -127,7 +127,9 @@ function removeAllDice() {
         customDieContainers[i].parentNode.removeChild(customDieContainers[i]);
     }
 
-    localStorage.clear();
+    localStorage.removeItem('dice');
+    localStorage.removeItem('customDice');
+
     calcStats();
 }
 
@@ -266,4 +268,16 @@ function rerollAll() {
         reRoll(diceNumbers[i], shouldCalcStats = false);
     };
     calcStats();
+}
+
+function hideSurveyAsk() {
+    let surveyAsk = document.querySelector('#survey-ask');
+    document.querySelector('#survey-ask').remove();
+    localStorage.setItem('surveyAskHidden', true);
+    document.querySelector('#config-container').appendChild(surveyAsk);
+    document.querySelector('#survey-ask-button').remove();
+}
+
+if (localStorage.getItem('surveyAskHidden')) {
+    hideSurveyAsk();
 }

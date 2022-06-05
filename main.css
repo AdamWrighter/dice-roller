@@ -43,6 +43,10 @@ button, .button, input {
     text-decoration: none;
 }
 
+.small {
+    font-size: smaller;
+}
+
 input {
     width: 60px;
 }
