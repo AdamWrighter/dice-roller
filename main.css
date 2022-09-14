@@ -163,22 +163,23 @@ button.customDieButton {
     /* box-shadow: 0 0 var(--spacing) 0 gold; */
     animation: buttonglow 200ms ease-in-out forwards;
 }
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #191919;
-        color: rgba(255, 255, 255, 0.9);
-    }
 
-    button, .button, input {
-        background-color: #262626;
-        color: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-
-    button:hover, .button:hover {
-        background: rgb(71,76,80) none repeat scroll 0% 0%;
-    }
+/* dark mode start */
+body.dark {
+    background-color: #191919;
+    color: rgba(255, 255, 255, 0.9);
 }
+
+body.dark button, body.dark .button, body.dark input {
+    background-color: #262626;
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+body.dark button:hover, body.dark .button:hover {
+    background: rgb(71,76,80) none repeat scroll 0% 0%;
+}
+/* dark mode end */
 
 @keyframes buttonzoomin {
     0% {

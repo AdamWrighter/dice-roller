@@ -281,3 +281,22 @@ function hideTipAsk() {
 if (localStorage.getItem('tipAskHidden')) {
     hideTipAsk();
 }
+
+// dark mode
+// on page load, and when prefers-color-scheme changes, add .dark to body if dark is preferred
+function colorScheme() {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches && !(urlParams.get('color-scheme') == 'light')) {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+    if (urlParams.get('color-scheme') == 'light') {
+        document.body.classList.remove('dark');
+    } else if (urlParams.get('color-scheme') == 'dark') {
+        document.body.classList.add('dark');
+    }
+}
+
+colorScheme();
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', colorScheme);
