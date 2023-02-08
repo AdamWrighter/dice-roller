@@ -270,14 +270,6 @@ function rerollAll() {
     calcStats();
 }
 
-function hideTipAsk() {
-    let tipAsk = document.querySelector('#tip-ask');
-    document.querySelector('#tip-ask').remove();
-    localStorage.setItem('tipAskHidden', true);
-    document.querySelector('#config-container').appendChild(tipAsk);
-    document.querySelector('#tip-ask-button').remove();
-}
-
 if (localStorage.getItem('tipAskHidden')) {
     hideTipAsk();
 }
