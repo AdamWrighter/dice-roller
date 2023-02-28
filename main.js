@@ -270,10 +270,6 @@ function rerollAll() {
     calcStats();
 }
 
-if (localStorage.getItem('tipAskHidden')) {
-    hideTipAsk();
-}
-
 // dark mode
 // on page load, and when prefers-color-scheme changes, add .dark to body if dark is preferred
 function colorScheme() {
