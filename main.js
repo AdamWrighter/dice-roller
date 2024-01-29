@@ -285,6 +285,30 @@ function colorScheme() {
     }
 }
 
+// Function to apply the default dice setting
+function applyDefaultDiceSetting() {
+    let isChecked = document.getElementById('default-dice-checkbox').checked;
+    let defaultDiceContainer = document.getElementById('default-dice');
+    defaultDiceContainer.style.display = isChecked ? 'flex' : 'none';
+}
+
+// Function to handle checkbox change
+function toggleDefaultDice() {
+    let isChecked = document.getElementById('default-dice-checkbox').checked;
+    localStorage.setItem('defaultDiceEnabled', isChecked);
+    applyDefaultDiceSetting();
+}
+
+// Event listener for the checkbox
+document.getElementById('default-dice-checkbox').addEventListener('change', toggleDefaultDice);
+
+// Apply settings on page load
+document.addEventListener('DOMContentLoaded', () => {
+    let storedSetting = localStorage.getItem('defaultDiceEnabled');
+    document.getElementById('default-dice-checkbox').checked = storedSetting !== null ? storedSetting === 'true' : true;
+    applyDefaultDiceSetting();
+});
+
 colorScheme();
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', colorScheme);

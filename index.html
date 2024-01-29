@@ -56,15 +56,21 @@
             <input type="number" id="custom-die-input" value=""><button id="add-custom-die"
                 onclick="addCustomDie()">+</button>
         </div>
+        <div>
+            <label for="default-dice-checkbox">Enable default dice:</label>
+            <input type="checkbox" id="default-dice-checkbox" checked>
+        </div>        
     </div>
     <div id="dice-buttons">
-        <button id="d20" onclick="addDie(20)" type="button" title="Add a d20">+d20</button>
-        <button id="d12" onclick="addDie(12)" type="button" title="Add a d12">+d12</button>
-        <button id="d10" onclick="addDie(10)" type="button" title="Add a d10">+d10</button>
-        <button id="d8" onclick="addDie(8)" type="button" title="Add a d8">+d8</button>
-        <button id="d6" onclick="addDie(6)" type="button" title="Add a d6">+d6</button>
-        <button id="d4" onclick="addDie(4)" type="button" title="Add a d4">+d4</button>
-        <button id="d100" onclick="addDie(100)" type="button" title="Add a d100">+d100</button>
+        <div id="default-dice">
+            <button id="d20" onclick="addDie(20)" type="button" title="Add a d20">+d20</button>
+            <button id="d12" onclick="addDie(12)" type="button" title="Add a d12">+d12</button>
+            <button id="d10" onclick="addDie(10)" type="button" title="Add a d10">+d10</button>
+            <button id="d8" onclick="addDie(8)" type="button" title="Add a d8">+d8</button>
+            <button id="d6" onclick="addDie(6)" type="button" title="Add a d6">+d6</button>
+            <button id="d4" onclick="addDie(4)" type="button" title="Add a d4">+d4</button>
+            <button id="d100" onclick="addDie(100)" type="button" title="Add a d100">+d100</button>
+        </div>
     </div>
     <div id="dice"></div>
 

@@ -23,12 +23,14 @@ body.embed {
     display: none;
 }
 
-#dice-buttons {
+#dice-buttons,
+#default-dice {
     display: flex;
     flex-wrap: wrap;
 }
 
-#dice-buttons button:not(:last-child) {
+#dice-buttons button:not(:last-child),
+#default-dice {
     margin-right: var(--spacing);
 }
 
